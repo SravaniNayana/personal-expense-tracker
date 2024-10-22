@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const transactionRoutes = require('./routes/transactionRoutes');
+const categoryRoutes = require('./routes/categoryRoutes'); // Add this line
 const { getSummary } = require('./utils/summaryUtil');
 const errorHandler = require('./middleware/errorHandler');
 
@@ -20,8 +21,13 @@ const app = express();
 // Middleware
 app.use(express.json());
 
-// Routes
+// Transaction Routes
 app.use('/api', transactionRoutes);
+
+// Category Routes
+app.use('/api', categoryRoutes); // Use the category routes
+
+// Summary Route
 app.get('/api/summary', getSummary);
 
 // Error handling middleware
