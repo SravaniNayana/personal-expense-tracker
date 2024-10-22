@@ -19,16 +19,14 @@ This is a RESTful API for managing personal financial records such as income and
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-repo/expense-tracker-api.git
-   cd expense-tracker-api
+   git clone https://github.com/your-repo/personal-expense-tracker.git
+   cd personal-expense-tracker
 2. Install the dependencies:
    ```bash
    npm install
 3. Set up the environment variables:
     - Create a .env file in the root directory.
-    - Add your MongoDB connection string in the .env file:
-      ```bash
-      MONGO_URI=mongodb://localhost:27017/expense-tracker
+    - Add your MongoDB connection string in the .env file
 4. Start the server:
    ```bash
    npm start
