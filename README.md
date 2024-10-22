@@ -19,21 +19,95 @@ This is a RESTful API for managing personal financial records such as income and
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-repo/personal-expense-tracker.git
-   cd personal-expense-tracker
+   git clone https://github.com/your-repo/expense-tracker-api.git
+   cd expense-tracker-api
 2. Install the dependencies:
    ```bash
    npm install
 3. Set up the environment variables:
     - Create a .env file in the root directory.
-    - Add your MongoDB connection string in the .env file
+    - Add your MongoDB connection string in the .env file:
+      ```bash
+      MONGO_URI=mongodb://localhost:27017/expense-tracker
 4. Start the server:
    ```bash
    npm start
 
 ## API Documentation
 
-### API Endpoints
+### API Endpoints for Categories:
+1. Add a category
+    - URL: /api/categories
+    - Method: POST
+    - Request Body:
+        ```json
+        {
+            "name": "Groceries",
+            "type": "expense", // or "income"
+        }
+    - Response:
+        ```json
+        {
+            "_id": "613a1f3e6f1f5e3534a3d2e1",
+            "name": "Groceries",
+            "type": "expense"
+        }
+2. Retrieve All categories
+    - URL: /api/categories
+    - Method: GET
+    - Response:
+        ```json
+        [
+            {
+                "_id": "613a1e1b6f1f5e3534a3d24c",
+                "name": "Salary",
+                "type": "income"
+            },
+            {
+                "_id": "613a1f3e6f1f5e3534a3d2e1",
+                "name": "Groceries",
+                "type": "expense"
+            }
+        ]
+    
+3. Retrieve a category by ID
+    - URL: /api/categories/:id
+    - Method: GET
+    - Response:
+        ```json
+        {
+            "_id": "613a1e1b6f1f5e3534a3d24c",
+            "name": "Salary",
+            "type": "income"
+        }
+    
+4. Update a category by ID
+    - URL: /api/categories/:id
+    - Method: PUT
+    - Request Body:
+        ```json
+        {
+            "name": "Food",
+            "type": "expense"
+        }
+    - Response:
+        ```json
+        {
+            "_id": "613a1f3e6f1f5e3534a3d2e1",
+            "name": "Food",
+            "type": "expense"
+        }
+
+5. Delete a category by ID
+    - URL: /api/categories/:id
+    - Method: DELETE
+    - Response:
+        ```json
+        {
+            "message": "category deleted successfully"
+        }
+
+### API Endpoints for Transactions:
 1. Add a Transaction
     - URL: /api/transactions
     - Method: POST
@@ -81,9 +155,9 @@ This is a RESTful API for managing personal financial records such as income and
                 "_id": "613b2f1245e0a12ef82e93a3",
                 "type": "expense",
                 "category": {
-                "_id": "613a1f3e6f1f5e3534a3d2e1",
-                "name": "Groceries",
-                "type": "expense"
+                    "_id": "613a1f3e6f1f5e3534a3d2e1",
+                    "name": "Groceries",
+                    "type": "expense"
                 },
                 "amount": 200,
                 "date": "2021-09-08T09:55:46.451Z",
