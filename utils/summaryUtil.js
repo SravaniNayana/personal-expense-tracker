@@ -25,7 +25,8 @@ const getSummary = async (req, res) => {
         res.status(200).json({
             totalIncome: income,
             totalExpenses: expenses,
-            balance: income - expenses
+            balance: income - expenses,
+            transactions: transactions 
         });
     } catch (error) {
         res.status(500).json({ error: error.message });
