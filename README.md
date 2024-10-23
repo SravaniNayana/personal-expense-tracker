@@ -218,7 +218,7 @@ This is a RESTful API for managing personal financial records such as income and
         }
 
 6. Retrieve a Summary of Transactions
-    - URL: /api/summary
+    - URL: /api/transactions/summary
     - Method: GET
     - Query Parameters (Optional):
         - startDate: Filter transactions starting from this date (format: YYYY-MM-DD).
